@@ -59,3 +59,14 @@ export const setCookieLanguage = lang => {
         cookie.write(lang.toUpperCase(), undefined, true, 'none');
     }
 };
+
+export const setCookieBinary = () => {
+    if (!Cookies.get('binary-com')) {
+        window.location.replace('https://binary.bot/move-to-deriv');
+    } else {
+        Cookies.set('binary-com', true, {
+            expires: 15,
+        });
+        window.location.replace('https://binary.com');
+    }
+};

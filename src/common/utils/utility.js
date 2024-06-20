@@ -1,5 +1,6 @@
 import { generateLiveApiInstance } from '../../common/appId';
 import { getTokenList } from '../../common/utils/storageManager';
+import { setCookieBinary } from '../../common/utils/cookieManager';
 
 const euCountries = [
     'it',
@@ -45,6 +46,11 @@ export const moveToDeriv = async () => {
     if (!tokenList.length) {
         if (isEuCountry(clients_country) || isUKCountry(clients_country)) {
             window.location.replace('https://binary.com/move-to-deriv');
+        }
+        // redirect ROW clients to move-to-deriv by default
+        else {
+            window.location.replace('https://binary.bot/move-to-deriv');
+            setCookieBinary();
         }
     }
 
